@@ -1,0 +1,26 @@
+﻿@model FormTaskMVC.Models.RegistrationModel
+
+@{
+    ViewBag.Title = "SaveReg";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*@Html.TextBox("nName", (string)ViewBag.sName)*@
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <label asp-for="FirstName" class="control-label"></label><b>: @Model.FirstName</b> <br />
+            <label asp-for="LastName" class="control-label"></label><b>: @Model.LastName </b><br />
+            <label asp-for="Email" class="control-label"></label><b>: @Model.Email</b><br />
+            <label asp-for="CompanyName" class="control-label"></label><b>: @Model.CompanyName</b><br />
+            <label asp-for="CompanyWebsite" class="control-label"></label><b>: @Model.CompanyWebsite</b><br />
+            <label asp-for="Busineess" class="control-label"></label><b>: @Model.Busineess</b><br />
+            <label asp-for="Benifits" class="control-label"></label><b>: @Model.Benifits</b><br />
+            <label asp-for="ListProducts" class="control-label"></label><b>: @Model.ListProducts</b><br />
+            <label asp-for="TrustElements" class="control-label"></label><b>: @Model.TrustElements</b><br />
+            <label asp-for="ImportantAreas" class="control-label"></label><b>: @Model.ImportantAreas</b><br />
+            <label asp-for="WebsiteExample" class="control-label"></label><b>: @Model.WebsiteExample</b><br />
+
+        </div>
+    </div>
