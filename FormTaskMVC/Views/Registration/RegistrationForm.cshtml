@@ -11,7 +11,6 @@
 <div class="row">
     <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto form p-4">
         
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-row">
                 <div class="col">
                     <div class="form-group">
@@ -41,7 +40,7 @@
                 <div class="form-group">
                     <div class="col">
                         <label asp-for="PhoneNumber" class="control-label"></label>
-                        <input asp-for="PhoneNumber" placeholder="### ### ####" class="form-control" />
+                        <input type="number" asp-for="PhoneNumber" placeholder="### ### ####" class="form-control" />
                         <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                     </div>
                 </div>
@@ -49,7 +48,7 @@
 
             <div class="form-group">
                 <label asp-for="Gender" class="control-label"></label>
-                @Html.DropDownList("Gender",
+                @Html.DropDownListFor(m => m.Gender,
                     new SelectList(Enum.GetValues(typeof(Gender))),
                     "Select Gender",
                     new { @class = "form-control" })
@@ -62,7 +61,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="CompanyType" class="control-label"></label>
-                @Html.DropDownList("Company Type",
+                @Html.DropDownListFor(m => m.CompanyType,
                   new SelectList(Enum.GetValues(typeof(CompanyType))),
                   "Select Company",
                   new { @class = "form-control" })
@@ -74,58 +73,61 @@
                 <span asp-validation-for="CompanyWebsite" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CompanyLimited" class="control-label"></label><br />
-                Public  @Html.RadioButton("CompanyLimited", "Public")
-                Private @Html.RadioButton("CompanyLimited", "Private")
+                <label asp-for="CompanyLimited" class="control-label"></label><br/>
+                @Html.RadioButtonFor(m => m.CompanyLimited, "Public") Public
+                @Html.RadioButtonFor(m => m.CompanyLimited, "Private")  Private
                 <span asp-validation-for="CompanyLimited" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Busineess" class="control-label"></label>
-                @*<input asp-for="Busineess" class="form-control" />*@
                 <textarea asp-for="Busineess" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 <span asp-validation-for="Busineess" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Benifits" class="control-label"></label>
-                @*<input asp-for="Benifits" class="form-control" />*@
                 <textarea asp-for="Benifits" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 <span asp-validation-for="Benifits" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ListProducts" class="control-label"></label>
-                @*<input asp-for="ListProducts" class="form-control" />*@
                 <textarea asp-for="ListProducts" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 <span asp-validation-for="ListProducts" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="TrustElements" class="control-label"></label>
-                @*<input asp-for="TrustElements" class="form-control" />*@
                 <textarea asp-for="TrustElements" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 <span asp-validation-for="TrustElements" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ServiceAreas" class="control-label"></label><br />
-               
-                    @foreach (var item in Model.ServiceAreas)
-                    {
-                        <input id="@(item.Value)"
-                               type="checkbox"
-                               value="@item.Value"
-                               checked="@item.IsChecked" />
-                        @item.Text <br />
-                }
 
+                @*@foreach (var item in Model.ServiceAreas)
+        {
+           <input id="@(item.Value)"
+                  type="checkbox"
+                  value="@item.Value"
+                  checked="@item.IsChecked" />
+           @item.Text <br />
+        }*@
+                @for (int i = 0; i < Model.ServiceAreas.Count; i++)
+                {
+                    @Html.CheckBoxFor(m => m.ServiceAreas[i].IsChecked)
+                    @Model.ServiceAreas[i].Text
+                    @*@Html.DisplayFor(m => m.ServiceAreas[i].Text)*@
+                    @Html.HiddenFor(m => m.ServiceAreas[i].Value)
+                    @Html.HiddenFor(m => m.ServiceAreas[i].Text)
+                    @*<label class="control-label ">@Model.ServiceAreas[i].Text </label>*@
+                    <br />
+                }
                 <span asp-validation-for="ServiceAreas" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ImportantAreas" class="control-label"></label>
-                @*<input asp-for="ImportantAreas" class="form-control" />*@
                 <textarea asp-for="ImportantAreas" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 <span asp-validation-for="ImportantAreas" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="WebsiteExample" class="control-label"></label>
-                @*<input asp-for="WebsiteExample" class="form-control" />*@
                 <textarea asp-for="WebsiteExample" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 <span asp-validation-for="WebsiteExample" class="text-danger"></span>
             </div>

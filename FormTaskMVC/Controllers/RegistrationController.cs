@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace FormTaskMVC.Controllers
@@ -25,33 +26,35 @@ namespace FormTaskMVC.Controllers
             ChkItems.ServiceAreas = ChkItem;
             return View(ChkItems);
         }
-        public IActionResult SaveRegistrations()
+        public IActionResult SaveRegistrations(RegistrationModel model)
         {
-            var model = new RegistrationModel()
+            //var model = new RegistrationModel()
+            // {
+            //     FirstName = Request.Form["FirstName"],
+            //     LastName = Request.Form["LastName"],
+            //     Email = Request.Form["Email"],
+            //     CompanyName = Request.Form["CompanyName"],
+            //     CompanyWebsite = Request.Form["CompanyWebsite"],
+            //     Busineess = Request.Form["Busineess"],
+            //     Benifits = Request.Form["Benifits"],
+            //     ListProducts = Request.Form["ListProducts"],
+            //     TrustElements = Request.Form["TrustElements"],
+            //     ImportantAreas = Request.Form["ImportantAreas"],
+            //     WebsiteExample = Request.Form["WebsiteExample"],
+            //     PhoneNumber = Request.Form["PhoneNumber"]
+            //};
+            StringBuilder sb = new StringBuilder();
+            foreach(var item in model.ServiceAreas)
             {
-                FirstName = Request.Form["FirstName"],
-                LastName = Request.Form["LastName"],
-                Email = Request.Form["Email"],
-                CompanyName = Request.Form["CompanyName"],
-                CompanyWebsite = Request.Form["CompanyWebsite"],
-                Busineess=Request.Form["Business"],
-                Benifits = Request.Form["Benifits"],
-                ListProducts=Request.Form["ListProducts"],
-                TrustElements=Request.Form["TrustElements"],
-                ImportantAreas=Request.Form["ImportantAreas"],
-                WebsiteExample=Request.Form["WebsiteExample"]
-
-        //Gender = Request.
-        //PhoneNumber= Convert.ToInt32(Request.Form["PhoneNumber"])
-    };  
+                if(item.IsChecked)
+                {
+                    sb.Append(item.Text + ",");
+                }
+            }
+          ViewBag.serviceAreas=  sb.ToString();
+           
             return View(model);
         }
-
-        //public string SaveRegistrations(RegistrationModel registration)
-        //{
-        //    string fname = registration.FirstName;
-        //    return fname;
-        //}
        
     }
 }

@@ -20,7 +20,7 @@ namespace FormTaskMVC.Models
         [Display(Name = "Phone Number")]
         [RegularExpression("^[6-9]{1}[0-9]{9}$")]
         [Required(ErrorMessage = "Phone Number is mandatory")]
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         [Required(ErrorMessage = "Gender is mandatory")]
         public Gender Gender { get; set; }
         [Display(Name = "Company Name")]
