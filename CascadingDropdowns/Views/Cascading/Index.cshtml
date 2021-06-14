@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Cascading Dropdowns</h1>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            <label>Country</label>
+            <select class="form-control" id="ddlCountry">
+                <option value="0">Select Country</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>State</label>
+            <select class="form-control" id="ddlState">
+                <option value="0">Select State</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>City</label>
+            <select class="form-control" id="ddlCity">
+                <option value="0">Select City</option>
+            </select>
+        </div>
+    </div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: '@Url.Action("GetCountry","Cascading")',
+            type: 'POST',
+            dataType: 'json',
+            success: function (data) {
+                $(data).each(function (index, item) {
+                    $('#ddlCountry').append(`<option value="${item.Id}">${item.name}</option>`);
+                });
+            }
+        });
+ $('#ddlCountry').on('change',function() {
+         $.ajax({
+            url: '@Url.Action("GetState","Cascading")',
+            type: 'POST',
+            dataType: 'json',
+            data: {CountryId:$(#ddlCountry').val()},
+               success: function (data) {
+                $(data).each(function (index, item) {
+                  $('#ddlCountry').append(`< option value = "${item.Id}" > ${ item.name }</option >`);
+                });
+            }
+       });
+    });
+
+</script>
+
+
+ 
