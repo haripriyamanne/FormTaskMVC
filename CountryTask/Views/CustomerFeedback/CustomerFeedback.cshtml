@@ -66,6 +66,7 @@
                 dataType: 'json',
                 data: { id: $("#Country").val() },
                 success: function (states) {
+                    debugger;
                     // states contains the JSON formatted list
                     // of states passed from the controller
                     $.each(states, function (i, state) {
