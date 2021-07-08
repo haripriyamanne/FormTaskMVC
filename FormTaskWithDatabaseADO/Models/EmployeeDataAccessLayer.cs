@@ -33,9 +33,9 @@ namespace FormTaskWithDatabaseADO.Models
                     employee.LastName = rdr["LastName"].ToString();
                     employee.Email = rdr["Email"].ToString();
                     employee.PhoneNumber = rdr["PhoneNumber"].ToString();
-                    employee.Gender = (Gender)rdr["Gender"];
+                    employee.Gender = (Gender)Enum.Parse(typeof(Gender), rdr["Gender"].ToString());
                     employee.CompanyName = rdr["CompanyName"].ToString();
-                    employee.CompanyType = (CompanyType)rdr["CompanyType"];
+                    employee.CompanyType = (CompanyType)Enum.Parse(typeof(CompanyType), rdr["CompanyType"].ToString());
                     employee.CompanyLimited = rdr["CompanyLimited"].ToString();
                     employee.CompanyWebsite = rdr["CompanyWebsite"].ToString();
                     employee.Busineess = rdr["Busineess"].ToString();
@@ -103,9 +103,9 @@ namespace FormTaskWithDatabaseADO.Models
                     employee.LastName = rdr["LastName"].ToString();
                     employee.Email = rdr["Email"].ToString();
                     employee.PhoneNumber = rdr["PhoneNumber"].ToString();
-                    employee.Gender = (Gender)(int)rdr["Gender"];
+                    employee.Gender = (Gender)Enum.Parse(typeof(Gender), rdr["Gender"].ToString());
                     employee.CompanyName = rdr["CompanyName"].ToString();
-                    employee.CompanyType = (CompanyType)(int)rdr["CompanyType"];
+                    employee.CompanyType = (CompanyType)Enum.Parse(typeof(CompanyType), rdr["CompanyType"].ToString()); 
                     employee.CompanyLimited = rdr["CompanyLimited"].ToString();
                     employee.CompanyWebsite = rdr["CompanyWebsite"].ToString();
                     employee.Busineess = rdr["Busineess"].ToString();
